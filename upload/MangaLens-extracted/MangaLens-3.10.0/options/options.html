@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MangaLens — Configuración</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, Arial, sans-serif; padding: 28px 20px; max-width: 720px; margin: 0 auto; background: #f0f2f5; color: #1a1a1a; }
+    h1 { color: #e53935; margin-bottom: 4px; font-size: 24px; }
+    .subtitle { color: #666; font-size: 13px; margin-bottom: 24px; }
+    .section { background: white; padding: 22px 24px; margin: 16px 0; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    .section h2 { margin: 0 0 14px; font-size: 16px; color: #333; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    label { display: block; margin: 14px 0 6px; font-weight: 600; font-size: 13px; color: #444; }
+    label.inline { display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer; }
+    input[type="text"], input[type="password"], input[type="number"], select {
+      width: 100%; padding: 10px 12px; border: 1.5px solid #ddd; border-radius: 8px;
+      font-size: 14px; background: #fafafa; transition: border-color .2s;
+    }
+    input:focus, select:focus { outline: none; border-color: #e53935; background: #fff; }
+    .api-key-row { display: flex; gap: 8px; align-items: flex-end; }
+    .api-key-row input { flex: 1; }
+    .toggle-eye { padding: 10px 13px; background: #f5f5f5; border: 1.5px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 16px; flex-shrink: 0; }
+    .toggle-eye:hover { background: #eee; }
+    .btn { padding: 10px 18px; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 14px; transition: background .2s; }
+    .btn:active { transform: scale(.97); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-primary { background: #e53935; color: white; }
+    .btn-primary:hover:not(:disabled) { background: #c62828; }
+    .btn-test  { background: #1565c0; color: white; }
+    .btn-test:hover:not(:disabled)  { background: #0d47a1; }
+    .btn-green { background: #2e7d32; color: white; }
+    .btn-green:hover:not(:disabled) { background: #1b5e20; }
+    .btn-secondary { background: #f0f0f0; color: #333; }
+    .btn-secondary:hover:not(:disabled) { background: #e0e0e0; }
+    .test-result { margin-top: 12px; padding: 11px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; display: none; line-height: 1.6; }
+    .test-ok   { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+    .test-err  { background: #ffebee; color: #b71c1c; border: 1px solid #ef9a9a; }
+    .test-info { background: #e3f2fd; color: #0d47a1; border: 1px solid #90caf9; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+    .badge-fast  { background: #fff3e0; color: #e65100; }
+    .badge-free  { background: #e8f5e9; color: #1b5e20; }
+    .badge-local { background: #f3e5f5; color: #6a1b9a; }
+    .badge-new   { background: #e8eaf6; color: #283593; }
+    .badge-mimo  { background: #fce4ec; color: #880e4f; }
+    .save-row { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+    .save-msg { font-size: 13px; font-weight: 600; color: #2e7d32; display: none; }
+    .mit-status { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; flex-shrink: 0; }
+    .dot.ok       { background: #4caf50; }
+    .dot.err      { background: #f44336; }
+    .dot.checking { background: #ff9800; animation: pulse .8s ease-in-out infinite alternate; }
+    @keyframes pulse { from{opacity:.4} to{opacity:1} }
+    .note { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+    .note code { background: #f5f5f5; padding: 1px 5px; border-radius: 4px; font-size: 11px; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 16px 0; }
+    .cluster-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+    .cluster-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 6px; }
+    .cluster-btn { padding: 8px 10px; border: 1.5px solid #ddd; border-radius: 8px; background: #fafafa; cursor: pointer; text-align: center; font-size: 12px; font-weight: 600; transition: all .2s; }
+    .cluster-btn:hover { border-color: #aaa; background: #f0f0f0; }
+    .cluster-btn.active { border-color: #e53935; background: #fff5f5; color: #c62828; }
+    .cluster-flag { font-size: 18px; display: block; margin-bottom: 2px; }
+    .port-row { display: flex; gap: 8px; align-items: center; }
+    .port-row input { max-width: 120px; }
+    .port-label { font-size: 13px; color: #666; }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <h1>⚙️ MangaLens — Configuración</h1>
+  <p class="subtitle">v3.10.0 · MIT · Groq · Xiaomi MiMo · Docker Local (LocalAI)</p>
+
+  <!-- MIT -->
+  <div class="section">
+    <h2>🌐 MangaImageTranslator (MIT) <span class="badge badge-free">SIN KEY</span></h2>
+    <p style="margin:0 0 12px;font-size:14px;color:#555">OCR + Inpainting con IA — proveedor principal, sin API key.</p>
+    <label>Servidor</label>
+    <div class="cluster-grid" id="mit-server-grid">
+      <button class="cluster-btn active" data-server="public"><span class="cluster-flag">☁️</span>Público (Online)</button>
+      <button class="cluster-btn" data-server="local"><span class="cluster-flag">🏠</span>Local (Docker)</button>
+    </div>
+    <div id="mit-local-config" style="display:none; margin-top:10px">
+      <label>Puerto</label>
+      <div class="port-row">
+        <input type="number" id="mit-local-port" value="5003" min="1" max="65535">
+        <span class="port-label">→ localhost:<span id="mit-port-preview">5003</span></span>
+      </div>
+    </div>
+    <div class="mit-status" style="margin-top:12px">
+      <div class="dot checking" id="mit-dot"></div>
+      <span id="mit-status-text" style="font-size:13px;color:#666">Verificando…</span>
+      <button class="btn btn-secondary" id="btn-test-mit" style="padding:6px 12px;font-size:12px">↺ Probar</button>
+    </div>
+    <div class="test-result" id="mit-result"></div>
+  </div>
+
+  <!-- NLLB -->
+  <div class="section">
+    <h2>🧩 NLLB Local <span class="badge badge-free">SIN KEY</span> <span class="badge badge-local">OFFLINE</span></h2>
+    <p style="margin:0 0 12px;font-size:14px;color:#555">No Language Left Behind (Meta/Facebook) — traductor offline gratuito. Requiere servidor MIT local (Docker). OCR con MIT + traducción local = <b>3-5x más rápido</b> que MIT completo.</p>
+    <label class="inline"><input type="checkbox" id="nllb-enabled"> Usar NLLB para traducción (requiere MIT Local activo)</label>
+    <p class="note" id="nllb-local-note" style="display:none;color:#c62828;background:#ffebee;padding:7px 10px;border-radius:6px;border:1px solid #ef9a9a">
+      ⚠️ NLLB solo funciona con <b>MIT Local (Docker)</b>. Cambiá el servidor a "Local" arriba para habilitarlo.
+    </p>
+    <hr class="divider">
+    <label>Modelo</label>
+    <select id="nllb-model">
+      <option value="nllb-200-distilled-600M">⚡ 600M — Rápido · ~1.2 GB · Recomendado</option>
+      <option value="nllb-200-distilled-1.3B">💎 1.3B — Mejor calidad · ~2.5 GB</option>
+    </select>
+    <p class="note">
+      El modelo se descarga automáticamente la primera vez que se usa.<br>
+      Activar NLLB hace que el modo Híbrido use <b>MIT solo para OCR</b> y NLLB para traducir → inpainting en el browser.
+    </p>
+    <div class="btn-row"><button class="btn btn-secondary" id="btn-test-nllb">🔍 Verificar NLLB</button></div>
+    <div class="test-result" id="nllb-result"></div>
+  </div>
+
+  <!-- Groq -->
+  <div class="section">
+    <h2>⚡ Groq <span class="badge badge-fast">ULTRA RÁPIDO</span></h2>
+    <p style="margin:0 0 12px;font-size:14px;color:#555">LPU de Groq — inferencia más rápida del mercado. Plan gratuito generoso.</p>
+    <label class="inline"><input type="checkbox" id="groq-enabled"> Habilitar como fallback</label>
+    <hr class="divider">
+    <label>API Key</label>
+    <div class="api-key-row">
+      <input type="password" id="groq-api-key" placeholder="gsk_..." autocomplete="off">
+      <button class="toggle-eye" id="btn-eye-groq">👁️</button>
+    </div>
+    <p class="note">Gratis en <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a></p>
+    <label>Modelo Vision</label>
+    <select id="groq-model">
+      <option value="meta-llama/llama-4-scout-17b-16e-instruct">⚡ Llama 4 Scout 17B — Recomendado</option>
+      <option value="meta-llama/llama-4-maverick-17b-128e-instruct">🦁 Llama 4 Maverick 17B</option>
+    </select>
+    <div class="btn-row"><button class="btn btn-test" id="btn-test-groq">🧪 Probar API Key</button></div>
+    <div class="test-result" id="groq-result"></div>
+  </div>
+
+  <!-- Xiaomi MiMo -->
+  <div class="section">
+    <h2>🤖 Xiaomi MiMo <span class="badge badge-mimo">TOKEN PLAN</span></h2>
+    <p style="margin:0 0 12px;font-size:14px;color:#555">Modelos MiMo-V2.5 con soporte vision multimodal — compatible OpenAI. Requiere suscripción Token Plan.</p>
+    <label class="inline"><input type="checkbox" id="mimo-enabled"> Habilitar como fallback</label>
+    <hr class="divider">
+    <label>API Key</label>
+    <div class="api-key-row">
+      <input type="password" id="mimo-api-key" placeholder="tp-..." autocomplete="off">
+      <button class="toggle-eye" id="btn-eye-mimo">👁️</button>
+    </div>
+    <p class="note">Obtené tu key en <a href="https://platform.xiaomimimo.com/console/plan-manage" target="_blank">platform.xiaomimimo.com → Subscription</a></p>
+    <label>Modelo Vision</label>
+    <select id="mimo-model">
+      <option value="mimo-v2.5">⚡ MiMo V2.5 — Recomendado</option>
+      <option value="mimo-v2.5-pro">💎 MiMo V2.5 Pro — Máxima calidad</option>
+    </select>
+    <p class="note" id="mimo-model-note"></p>
+    <label>Cluster (región)</label>
+    <p class="note" style="margin-top:0">Usá la misma Base URL que figura en tu página de Subscription.</p>
+    <div class="cluster-grid-3" id="mimo-cluster-grid">
+      <button class="cluster-btn active" data-cluster="singapore"><span class="cluster-flag">🇸🇬</span>Singapur</button>
+      <button class="cluster-btn" data-cluster="europe"><span class="cluster-flag">🇪🇺</span>Europa</button>
+      <button class="cluster-btn" data-cluster="china"><span class="cluster-flag">🇨🇳</span>China</button>
+    </div>
+    <div class="btn-row"><button class="btn btn-test" id="btn-test-mimo">🧪 Probar API Key</button></div>
+    <div class="test-result" id="mimo-result"></div>
+  </div>
+
+  <!-- Docker Local (LocalAI) -->
+  <div class="section">
+    <h2>🐳 Docker Local <span class="badge badge-local">LOCAL</span></h2>
+    <p style="margin:0 0 12px;font-size:14px;color:#555">Modelos corriendo en un contenedor Docker con API compatible OpenAI (ej. <a href="https://localai.io" target="_blank">LocalAI</a>) — 100% privado, sin internet, sin API key.</p>
+    <label class="inline"><input type="checkbox" id="docker-enabled"> Habilitar como fallback</label>
+    <hr class="divider">
+    <label>Host</label>
+    <input type="text" id="docker-host" value="localhost" placeholder="localhost">
+    <label>Puerto</label>
+    <div class="port-row">
+      <input type="number" id="docker-port" value="8080" min="1" max="65535">
+      <span class="port-label">→ <span id="docker-host-preview">localhost</span>:<span id="docker-port-preview">8080</span></span>
+    </div>
+    <p class="note">Iniciá el contenedor con algo como: <code>docker run -p 8080:8080 localai/localai:latest</code></p>
+
+    <label>Modelo instalado</label>
+    <input type="text" id="docker-model" list="docker-models-list" placeholder="Verificá primero para ver los instalados">
+    <datalist id="docker-models-list"></datalist>
+    <p class="note">Elegí uno de los detectados en el contenedor, o escribí el nombre manualmente.</p>
+
+    <div class="btn-row"><button class="btn btn-green" id="btn-test-docker">🔍 Ver modelos instalados</button></div>
+    <div class="test-result" id="docker-result"></div>
+    <div class="test-result" id="docker-recommendation" style="display:none"></div>
+  </div>
+
+  <!-- Preferencias -->
+  <div class="section">
+    <h2>⚙️ Preferencias</h2>
+    <label>Idioma destino</label>
+    <select id="target-lang">
+      <option value="en">🇺🇸 English</option>
+      <option value="es">🇦🇷 Español</option>
+      <option value="pt">🇧🇷 Português</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="ru">🇷🇺 Русский</option>
+      <option value="zh">🇨🇳 中文</option>
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="ar">🇸🇦 العربية</option>
+    </select>
+    <label>Modo predeterminado</label>
+    <select id="default-mode">
+      <option value="hybrid">🔀 Híbrido (MIT → Groq → MiMo → Docker Local)</option>
+      <option value="mit">🌐 Solo MIT</option>
+      <option value="groq">⚡ Solo Groq</option>
+      <option value="xiaomimimo">🤖 Solo Xiaomi MiMo</option>
+      <option value="docker">🐳 Solo Docker Local</option>
+    </select>
+    <label>Fuente de traducción</label>
+    <select id="manga-font">
+      <option value="'Bangers','Arial Black',sans-serif">Bangers — Cómic clásico (recomendada)</option>
+      <option value="'Comic Sans MS','Comic Sans',cursive">Comic Sans — Familiar</option>
+      <option value="'Arial Black',Arial,sans-serif">Arial Black — Negrita</option>
+      <option value="'Georgia',serif">Georgia — Serif elegante</option>
+      <option value="'Courier New',monospace">Courier — Monoespaciado</option>
+      <option value="'Trebuchet MS',sans-serif">Trebuchet — Redondeada</option>
+    </select>
+    <p class="note">Se aplica al texto superpuesto en las imágenes traducidas.</p>
+    <label class="inline" style="margin-top:16px"><input type="checkbox" id="show-fab" checked> Mostrar botón flotante en página</label>
+    <label class="inline" style="margin-top:10px"><input type="checkbox" id="auto-translate"> Auto-traducir al cargar</label>
+  </div>
+
+  <div class="save-row">
+    <button class="btn btn-primary" id="btn-save">💾 Guardar Cambios</button>
+    <span class="save-msg" id="save-msg">✅ Guardado</span>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

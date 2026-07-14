@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 300px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+    }
+    .header {
+      background: linear-gradient(135deg, #e53935, #b71c1c);
+      padding: 14px 18px;
+    }
+    .header-top { display: flex; align-items: center; gap: 10px; }
+    .header-icon { font-size: 22px; }
+    .header-title { font-size: 18px; font-weight: 800; color: #fff; }
+    .header-sub { font-size: 10px; color: rgba(255,255,255,.6); margin-top: 2px; }
+    .version { background: rgba(0,0,0,.25); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: auto; }
+
+    .content { padding: 14px; }
+
+    .section { margin-bottom: 14px; }
+    .section-title { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: #555; margin-bottom: 8px; }
+
+    .row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .row:last-child { margin-bottom: 0; }
+    .row-icon { font-size: 16px; width: 20px; text-align: center; opacity: .7; }
+    .row label { font-size: 12px; color: #999; font-weight: 600; width: 50px; flex-shrink: 0; }
+    .row select {
+      flex: 1; padding: 7px 24px 7px 10px;
+      background: #1c1c1c; color: #eee;
+      border: 1.5px solid #2a2a2a; border-radius: 8px;
+      font-size: 11px; font-weight: 600; cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 8px center;
+    }
+    .row select:focus { outline: none; border-color: #e53935; }
+
+    .row.toggle { cursor: pointer; }
+    .row.toggle input[type="checkbox"] {
+      width: 15px; height: 15px; accent-color: #e53935; cursor: pointer;
+    }
+    .row.toggle label { width: auto; cursor: pointer; color: #bbb; }
+
+    .btn {
+      display: block; width: 100%; padding: 12px; margin-bottom: 7px;
+      border: none; border-radius: 10px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all .15s;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary {
+      background: linear-gradient(135deg, #e53935, #c62828);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(229,57,53,.3);
+    }
+    .btn-primary:hover { background: linear-gradient(135deg,#ef5350,#e53935); }
+    .btn-secondary {
+      background: #1c1c1c; color: #bbb;
+      border: 1.5px solid #2a2a2a;
+    }
+    .btn-secondary:hover { background: #222; color: #eee; border-color: #444; }
+
+    .footer {
+      padding: 10px 14px 12px;
+      display: flex; justify-content: space-between;
+      border-top: 1px solid #1a1a1a;
+    }
+    .footer a { color: #555; text-decoration: none; font-size: 11px; font-weight: 600; }
+    .footer a:hover { color: #e53935; }
+    .footer span { color: #333; font-size: 10px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-top">
+      <span class="header-icon">🔍</span>
+      <div>
+        <div class="header-title">MangaLens</div>
+        <div class="header-sub">Traductor de Manga</div>
+      </div>
+      <span class="version">v3.10</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <button id="btn-all" class="btn btn-primary">📄 Traducir toda la página</button>
+      <button id="btn-activate" class="btn btn-secondary">🔤 Activar modo clic</button>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Configuración</div>
+      <div class="row">
+        <span class="row-icon">🌍</span>
+        <label>Idioma</label>
+        <select id="lang-select">
+          <option value="es">🇦🇷 Español</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="pt">🇧🇷 Português</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="zh">🇨🇳 中文</option>
+          <option value="ko">🇰🇷 한국어</option>
+          <option value="ja">🇯🇵 日本語</option>
+        </select>
+      </div>
+      <div class="row">
+        <span class="row-icon">🔤</span>
+        <label>Fuente</label>
+        <select id="font-select">
+          <option value="'Bangers','Arial Black',sans-serif">Bangers — Cómic</option>
+          <option value="'Comic Sans MS','Comic Sans',cursive">Comic Sans</option>
+          <option value="'Arial Black',Arial,sans-serif">Arial Black</option>
+          <option value="'Georgia',serif">Georgia</option>
+        </select>
+      </div>
+      <div class="row">
+        <span class="row-icon">⚙️</span>
+        <label>Motor</label>
+        <select id="mode-select">
+          <option value="hybrid">🔀 Híbrido</option>
+          <option value="mit">🌐 Solo MIT</option>
+          <option value="groq">⚡ Solo Groq</option>
+          <option value="xiaomimimo">🤖 Solo MiMo</option>
+          <option value="docker">🐳 Solo Docker</option>
+        </select>
+      </div>
+      <div class="row toggle">
+        <input type="checkbox" id="show-fab">
+        <label for="show-fab">Mostrar botón flotante</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="#" id="link-options">⚙️ Avanzado</a>
+    <span>MIT</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

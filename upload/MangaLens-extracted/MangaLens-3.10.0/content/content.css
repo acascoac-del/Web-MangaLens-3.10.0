@@ -1,0 +1,4 @@
+body.manglens-active img {
+  cursor: crosshair !important;
+  outline: 2px dashed rgba(255, 80, 80, 0.6) !important;
+}

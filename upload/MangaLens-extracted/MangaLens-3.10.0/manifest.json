@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "MangaLens Translator",
+  "version": "3.10.0",
+  "description": "Traductor de manga — MIT (MangaImageTranslator) — Rápido y gratuito",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost/*",
+    "https://mangaimagetranslator.com/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content/constants.js",
+        "content/utils.js",
+        "content/detector.js",
+        "content/capturer.js",
+        "content/inpainter.js",
+        "content/ui.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "128": "icons/icon128.png"
+  }
+}
