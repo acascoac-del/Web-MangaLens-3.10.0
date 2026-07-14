@@ -9,7 +9,6 @@ const navLinks = [
   { href: "#how-it-works", label: "Cómo funciona" },
   { href: "#modes", label: "Motores" },
   { href: "#install", label: "Instalación" },
-  { href: "#publish", label: "Publicar en Chrome Store" },
   { href: "#faq", label: "FAQ" },
 ];
 

@@ -24,15 +24,6 @@ const footerLinks = [
     ],
   },
   {
-    title: "Publicar",
-    links: [
-      { label: "Guía Chrome Store", href: "#publish" },
-      { label: "Developer Dashboard", href: "https://chrome.google.com/webstore/devconsole" },
-      { label: "Política de privacidad", href: "#publish" },
-      { label: "Capturas sugeridas", href: "#publish" },
-    ],
-  },
-  {
     title: "Recursos",
     links: [
       { label: "MangaImageTranslator", href: "https://github.com/zyddnys/manga-image-translator" },

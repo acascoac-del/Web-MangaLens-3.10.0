@@ -178,21 +178,21 @@ export const steps: Step[] = [
     number: "01",
     title: "Instalá la extensión",
     description:
-      "Descargá MangaLens desde la Chrome Web Store o cargá el .zip descomprimido en modo desarrollador. Aparecerá el ícono 🔍 en tu barra de herramientas.",
+      "Hacé clic en 'Agregar a Chrome' y confirmá en la Chrome Web Store. En 5 segundos aparece el ícono 🔍 de MangaLens en tu barra de herramientas. Sin registros, sin permisos extraños.",
     icon: Container,
   },
   {
     number: "02",
-    title: "Elegí tu motor de traducción",
+    title: "Elegí tu motor e idioma",
     description:
-      "Abrí el popup → Configuración → Motor. Dejá 'Híbrido' para empezar sin configurar nada, o abrí Opciones Avanzadas para conectar Groq, MiMo o tu Docker Local.",
+      "Hacé clic en el ícono 🔍 → seleccioná tu idioma destino (español por defecto) y dejá 'Híbrido' como motor para máxima disponibilidad. ¿Querés más velocidad o privacidad? Explorá Opciones Avanzadas.",
     icon: Cpu,
   },
   {
     number: "03",
     title: "Traducí cualquier manga",
     description:
-      "Navegá a tu sitio de manga favorito, hacé clic en 'Traducir toda la página' o activá el modo clic y seleccioná las imágenes una por una. Listo.",
+      "Navegá a tu sitio de manga favorito y hacé clic en 'Traducir toda la página'. ¿Preferís ir imagen por imagen? Activá el modo clic y seleccioná solo lo que quieras traducir. Listo.",
     icon: Eye,
   },
 ];

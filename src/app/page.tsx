@@ -7,7 +7,6 @@ import { HowItWorks } from "@/components/landing/HowItWorks";
 import { TranslationModes } from "@/components/landing/TranslationModes";
 import { Languages } from "@/components/landing/Languages";
 import { Installation } from "@/components/landing/Installation";
-import { ChromeStoreGuide } from "@/components/landing/ChromeStoreGuide";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
 
@@ -30,7 +29,6 @@ export default function Home() {
         <TranslationModes />
         <Languages />
         <Installation />
-        <ChromeStoreGuide />
         <FAQ />
       </main>
 
