@@ -33,6 +33,12 @@ const footerLinks = [
       { label: "LocalAI", href: "https://localai.io" },
     ],
   },
+  {
+    title: "Legal",
+    links: [
+      { label: "Política de Privacidad", href: "/privacidad" },
+    ],
+  },
 ];
 
 export function Footer() {
