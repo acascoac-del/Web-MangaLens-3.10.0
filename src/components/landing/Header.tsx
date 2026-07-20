@@ -46,7 +46,7 @@ export function Header() {
                 Manga<span className="text-red-500">Lens</span>
               </span>
               <span className="text-[10px] text-muted-foreground font-medium">
-                v3.10.0
+                v3.10.2
               </span>
             </div>
           </a>
@@ -84,7 +84,7 @@ export function Header() {
               asChild
               className="bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white shadow-lg shadow-red-600/30"
             >
-              <a href="#install">
+              <a href="https://chromewebstore.google.com/detail/iifomfljpcmmpmjhapinfmahfoccikjc?utm_source=item-share-cb" target="_blank" rel="noreferrer">
                 <Chrome className="h-4 w-4 mr-2" />
                 Agregar a Chrome
               </a>
@@ -118,7 +118,7 @@ export function Header() {
                 asChild
                 className="mt-2 bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white"
               >
-                <a href="#install" onClick={() => setOpen(false)}>
+                <a href="https://chromewebstore.google.com/detail/iifomfljpcmmpmjhapinfmahfoccikjc?utm_source=item-share-cb" target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
                   <Chrome className="h-4 w-4 mr-2" />
                   Agregar a Chrome
                 </a>

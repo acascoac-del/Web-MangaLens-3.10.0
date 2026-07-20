@@ -16,7 +16,7 @@ const footerLinks = [
   {
     title: "Instalación",
     links: [
-      { label: "Agregar a Chrome", href: "#install" },
+      { label: "Agregar a Chrome", href: "https://chromewebstore.google.com/detail/iifomfljpcmmpmjhapinfmahfoccikjc?utm_source=item-share-cb" },
       { label: "Configurar Docker + MIT", href: "#install" },
       { label: "Configurar Ollama", href: "#install" },
       { label: "Configurar LibreTranslate", href: "#install" },
@@ -59,7 +59,9 @@ export function Footer() {
             </p>
           </div>
           <a
-            href="#install"
+            href="https://chromewebstore.google.com/detail/iifomfljpcmmpmjhapinfmahfoccikjc?utm_source=item-share-cb"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all whitespace-nowrap"
           >
             <Chrome className="h-4 w-4" />
@@ -110,7 +112,7 @@ export function Footer() {
                 Manga<span className="text-red-500">Lens</span>
               </span>
               <span className="text-muted-foreground ml-2 text-xs">
-                v3.10.0 · Manifest V3
+                v3.10.2 · Manifest V3
               </span>
             </div>
           </div>

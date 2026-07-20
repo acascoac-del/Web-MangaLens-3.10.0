@@ -137,7 +137,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card-red text-xs font-medium text-red-300 mb-6"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              v3.10.0 · MIT · Groq · MiMo · Docker Local
+              v3.10.2 · MIT · Groq · MiMo · Docker Local
             </motion.div>
 
             <motion.h1
@@ -180,7 +180,7 @@ export function Hero() {
                 asChild
                 className="bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white shadow-xl shadow-red-600/30 text-base h-12 px-6"
               >
-                <a href="#install">
+                <a href="https://chromewebstore.google.com/detail/iifomfljpcmmpmjhapinfmahfoccikjc?utm_source=item-share-cb" target="_blank" rel="noreferrer">
                   <Chrome className="h-5 w-5 mr-2" />
                   Agregar a Chrome
                 </a>

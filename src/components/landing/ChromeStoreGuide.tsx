@@ -37,8 +37,8 @@ const steps = [
     icon: Upload,
     title: "Subir el .zip de la extensión",
     description:
-      "En el dashboard, hacé clic en 'Add new item' → 'Upload'. Subí el archivo MangaLens-3.10.0.zip (no hace falta descomprimirlo). Chrome valida automáticamente el manifest.json y la estructura.",
-    code: "MangaLens-3.10.0.zip",
+      "En el dashboard, hacé clic en 'Add new item' → 'Upload'. Subí el archivo MangaLens-3.10.2.zip (no hace falta descomprimirlo). Chrome valida automáticamente el manifest.json y la estructura.",
+    code: "MangaLens-3.10.2.zip",
     codeLabel: "Archivo a subir (36 KB)",
     external: false,
     tips: [
